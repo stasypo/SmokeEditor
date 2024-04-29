@@ -1,0 +1,59 @@
+﻿@page "/counter"
+@rendermode InteractiveServer
+
+<PageTitle>Counter</PageTitle>
+
+<h1>Counter</h1>
+
+<p role="status">Current count: @currentCount</p>
+
+<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+
+@code {
+    private int currentCount = 0;
+
+    private void IncrementCount()
+    {
+        currentCount++;
+    }
+    
+    private static void TestTestSemanticHighlightingMethodInRazor()
+    {
+        // Local Variables
+        var myLocalVariable = "This is a local variable";
+        Console.WriteLine(myLocalVariable);
+		
+#if DEBUG
+        var debugVariable1 = "This is a local variable for DEBUG configuration";
+        var debugVariable2 = "This is a local variable for DEBUG configuration";
+        var debugVariable3 = "This is a local variable for DEBUG configuration";
+        Console.WriteLine(debugVariable1);
+#else
+        var releaseVariable = "This is a local variable for non-DEBUG configuration";
+        Console.WriteLine(releaseVariable);
+#endif
+		
+        // Using a local variable inside a loop
+        for (int i = 0; i < 5; i++)
+        {
+            Console.WriteLine("Value of the local variable i: " + i);
+        }
+
+        // Call a method with parameters
+        int a = 5;
+        int b = 6;
+        var result = AddNumbers(a, b);
+        Console.WriteLine("AddNumbers result: " + result);
+        
+        // Use parameters in a lambda function
+        var numbers = new[] {1, 2, 3, 4, 5};
+        Array.ForEach(numbers, x => Console.WriteLine("ForEach parameter: " + x));
+    }
+    
+    private static int AddNumbers(int a, int b)  // parameters a and b
+    {
+        // Local variable inside a method
+        var sum = a + b;
+        return sum;
+    }
+}
